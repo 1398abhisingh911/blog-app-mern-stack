@@ -7,7 +7,11 @@ const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const categoriesRoute = require("./routes/categories");
 const multer = require("multer");
+const morgan = require("morgan");
+const cors = require("cors");
 
+app.use(cors());
+app.use(morgan("dev"));
 dotenv.config();
 app.use(express.json());
 mongoose
