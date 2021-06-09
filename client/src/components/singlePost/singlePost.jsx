@@ -1,18 +1,30 @@
 import "../../styles/singlePost.css";
-
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
 import React from "react";
 
 export default function SinglePost() {
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
+  const [post, setPost] = useState({});
+  useEffect(() => {
+    const getPost = async () => {
+      const res = await axios.get("/posts/" + path);
+      setPost(res.data);
+    };
+    getPost();
+  }, [path]);
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
-        <img
-          src="https://previews.123rf.com/images/ongkachakon/ongkachakon1507/ongkachakon150700149/43126204-bamboo-leaf-and-green-nature-light-bokeh-background.jpg"
-          alt=""
-          className="singlePostImage"
-        />
+        {post.photo && (
+          <img src={post.photo} alt="" className="singlePostImage" />
+        )}
+
         <h1 className="singlePostTitle">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+          {post.title}
           <div className="singlePostEdit">
             <i className="singlePostIcon fas fa-edit"></i>
             <i className="singlePostIcon far fa-trash-alt"></i>
@@ -20,26 +32,16 @@ export default function SinglePost() {
         </h1>
         <div className="singlePostInfo">
           <span className="singlePostAuthor">
-            Author: <b>Abhijeet</b>
+            Author:
+            <Link to={`/?user=${post.username}`} className="link">
+              <b>{post.username}</b>
+            </Link>
           </span>
-          <span className="singlePostDate">1 hour ago</span>
+          <span className="singlePostDate">
+            {new Date(post.createdAt).toDateString()}
+          </span>
         </div>
-        <p className="singlePostDesc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Reprehenderit, quibusdam! Rem, vitae ullam. Ut voluptas eum veniam
-          possimus ullam consectetur magni. Iste incidunt temporibus fugit sed
-          omnis! Nam, ratione officia!Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Reprehenderit, quibusdam! Rem, vitae ullam. Ut
-          voluptas eum veniam possimus ullam consectetur magni. Iste incidunt
-          temporibus fugit sed omnis! Nam, ratione officia! Lorem ipsum dolor
-          sit amet consectetur adipisicing elit. Reprehenderit, quibusdam! Rem,
-          vitae ullam. Ut voluptas eum veniam possimus ullam consectetur magni.
-          Iste incidunt temporibus fugit sed omnis! Nam, ratione officia! Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit,
-          quibusdam! Rem, vitae ullam. Ut voluptas eum veniam possimus ullam
-          consectetur magni. Iste incidunt temporibus fugit sed omnis! Nam,
-          ratione officia!
-        </p>
+        <p className="singlePostDesc">{post.desc}</p>
       </div>
     </div>
   );
