@@ -1,9 +1,8 @@
 import "../../styles/register.css";
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { useLocation } from "react-router";
 
 export default function Register() {
   const [username, setUsername] = useState("");

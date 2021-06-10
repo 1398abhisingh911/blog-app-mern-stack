@@ -6,11 +6,12 @@ import Write from "../Pages/Write/Write";
 import Settings from "../Pages/settings/Settings";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
-
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useContext } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Context } from "../context/Context";
 
 function App() {
-  const user = false;
+  const user = useContext(Context);
   return (
     <div>
       <Router>
