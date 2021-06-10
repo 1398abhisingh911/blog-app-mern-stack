@@ -27,7 +27,7 @@ Project is created with:
 	<br>
         <img src="/Images/3.png" width="350">
 	<br>
-	<h2>After Login and Writing Blog</h2>
+	<h2>Login and Writing Blog</h2>
         <img src="/Images/4.png" width="350">
 	<br>
          <img src="/Images/5.png" width="350">
