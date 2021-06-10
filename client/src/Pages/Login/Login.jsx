@@ -30,7 +30,7 @@ export default function Login() {
       <form className="loginForm" onSubmit={handleSubmit}>
         <label>Username</label>
         <input
-          type="email"
+          type="text"
           className="loginInput"
           placeholder="Enter your Username"
           ref={userRef}
