@@ -1,6 +1,5 @@
 import React from "react";
 import "../../styles/Header.css";
-import Posts from "../Posts/Posts";
 export default function Header() {
   return (
     <div className="header">
