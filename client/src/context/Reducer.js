@@ -15,7 +15,7 @@ const Reducer = (state, action) => {
     case "LOGIN_FAILURE":
       return {
         user: null,
-        isFetching: true,
+        isFetching: false,
         error: true
       };
     case "UPDATE_START":
@@ -32,7 +32,7 @@ const Reducer = (state, action) => {
     case "UPDATE_FAILURE":
       return {
         user: state.user,
-        isFetching: true,
+        isFetching: false,
         error: true
       };
     case "LOGOUT":

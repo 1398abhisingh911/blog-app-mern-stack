@@ -11,7 +11,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Context } from "../context/Context";
 
 function App() {
-  const user = useContext(Context);
+  const { user } = useContext(Context);
   return (
     <div>
       <Router>
